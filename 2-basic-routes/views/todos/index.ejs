@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <%- include('../partials/head', { title: locals.header }) %>
+
+  <script>
+    'use strict';
+
+    function updateTodoItem(event, todo) {
+      var updatedTodo = Object.assign({}, todo);
+      updatedTodo.done = event.target.checked;
+
+      var updatedTodoJson = JSON.stringify(updatedTodo);
+
+      var xhr = new XMLHttpRequest();
+      xhr.open("put", '/todos', true);
+      xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
+      xhr.onload = function () {
+        if (xhr.readyState == 4 && xhr.status == "200") {
+          var result = JSON.parse(xhr.responseText);
+          var todoSpanElem = document.getElementById(result.id);
+          todoSpanElem.classList.toggle('done', result.done);
+        }
+      }
+      xhr.send(updatedTodoJson);
+    }
+  </script>
+
+  <body>
+    <h1><%= locals.header %></h1>
+
+    <form action="/todos" method="post" enctype="application/json">
+      <input type="text" name="todo" autofocus placeholder="new todo">
+      <button type="submit">Add</button>
+    </form>
+
+    <ul>
+    <% locals.todos.forEach(function(todo) { %>
+      <li>
+        <input type="checkbox" onchange="updateTodoItem(event, <%=JSON.stringify(todo)%>)" <%= todo.done ? 'checked' : null %>>
+        <span id="<%= todo.id %>" class=<%= todo.done ? 'done' : ''%>><%= todo.title %></span>
+      </li>
+    <% }); %>
+    </ul>
+  </body>
+</html>
