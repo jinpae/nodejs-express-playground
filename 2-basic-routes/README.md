@@ -11,7 +11,7 @@ In ths section we'll get our hands dirty by implementing some basic routes used 
     
 3. Change directory:
     ```
-    cd nodejs-express-playground
+    cd nodejs-express-playground/2-basic-routes
     ```
 
 4. Install dependencies using `NPM` or `Yarn`
@@ -46,9 +46,9 @@ Let's add a few more one by one serving a static html and EJS template engine (y
 
     ```
     {
-        id: 1,
-        title: Learn Node.js & Express
-        done: false
+      id: 1,
+      title: Learn Node.js & Express
+      done: false
     }
     ```
 
