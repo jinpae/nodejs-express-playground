@@ -42,14 +42,14 @@ Let's add a few more one by one serving a static html and EJS template engine (y
 
 3. Add `GET /todos` route that renders `index.ejs` in `views/todos` directory with a hardcoded list of todos (don't worry about the contents themselves as long as the template page gets the todos array from the route handler and prints them out dynamically in the view file).
 
-Todo object schema:
+    Todo object schema:
 
-```
-{
-  id: 1,
-  title: Learn Node.js & Express
-  done: false
-}
-```
+    ```
+    {
+        id: 1,
+        title: Learn Node.js & Express
+        done: false
+    }
+    ```
 
 4. Add `GET /todos/all`, `GET /todos/active`, `GET /todos/completed` routes showing all todo items, non-completed items, and completed (`done == true`) items respectively.
