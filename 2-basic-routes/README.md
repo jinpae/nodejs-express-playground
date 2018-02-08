@@ -47,8 +47,8 @@ Let's add a few more one by one serving a static html and EJS template engine (y
     ```
     {
       id: 1,
-      title: Learn Node.js & Express
-      done: false
+      text: Learn Node.js & Express
+      completed: false
     }
     ```
 
